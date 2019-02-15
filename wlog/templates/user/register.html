@@ -1,0 +1,110 @@
+{% extends 'base/index.html' %}
+{% load staticfiles %}
+
+
+{% block listContent %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+
+
+{% block register %}
+
+	<div class="container">
+		<div class="row align-items-start">
+			<div class="col mt-2">
+				<a class="btn btn btn-outline-primary" href="{% url 'login' %}">Iniciar Sesion</a>
+			</div>
+		</div>
+	</div>
+
+	{% if user.is_authenticated %}
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<h4>Error</h4>
+		</div>
+	</div>
+
+	{% else %}
+
+	<div class="row justify-content-center mt-5">
+	<img src="{% static 'open-iconic-master/png/people-8x.png'%}" width="7%" height="7%">
+	</div>
+	
+	<form method="POST" action="">
+		{% csrf_token %}
+		
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				{% for field in form.visible_fields %}
+					<div class="div-alert">
+					{{ field.errors }}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		{% if messages %}
+		<div class="div-alert">
+			<ul>
+				{% for message in messages %}
+				<li {% if messages.tags %} class = "{{ message.tags }}" {% endif %}>
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} Importante: {% endif %}	
+				{{ message }}
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+
+		<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.username }}
+				<label for="{{ form.username.name }}">{{ form.username.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.first_name }}
+				<label for="{{ form.first_name.name }}">{{ form.first_name.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.last_name }}
+				<label for="{{ form.last_name.name }}">{{ form.last_name.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.email }}
+				<label for="{{ form.email.name }}">{{ form.email.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.password1 }}
+				<label for="{{ form.password1.name }}">{{ form.password1.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form-group">
+				{{ form.password2 }}
+				<label for="{{ form.password2.name }}">{{ form.password2.label }}</label>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-3">
+			<div class="mt-3">
+				<button class="btn btn btn-outline-primary mb-4" type="submit">Registrarse</button>
+			</div>
+		</div>
+	</div>	
+	</form>
+	
+	{% endif %}
+
+{% endblock %}

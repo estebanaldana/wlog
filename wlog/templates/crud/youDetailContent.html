@@ -1,0 +1,83 @@
+{% extends 'crud/youContents.html' %}
+{% load staticfiles %}
+
+
+{% block youContent %}
+{% endblock %}
+
+{% block youDetailsContent %}
+
+<div class="container">
+	<div class="row align-items-start">
+		<div class="col mt-2">
+			<a href="{% url 'index' %}"><img class="animated bounce" src="{% static 'images/logo.png'%}" width="90" height="80"></a>
+		</div>
+	</div>
+</div>
+
+{% if youinstance %}
+	
+<div class="container mt-5">
+	<div class="row justify-content-center mt-3">
+		<img height="90" src="/media/{{ youinstance.image }}">
+	</div>
+	<div class="row justify-content-center mt-3">
+		<p>{{ youinstance.title }}</p>
+	</div>
+	<div class="row justify-content-center mt-3">
+		<p>{{ youinstance.description }}</p>
+	</div>
+	<div class="row justify-content-center mt-3">
+		<p>{{ youinstance.timestamp }}</p>
+	</div>
+	<div class="row justify-content-center mt-3">
+		<a class="btn btn-primary mb-3 button-mr" href="{% url 'updateYouContent' youinstance.id %}">Editar</a>
+		<a class="btn btn-primary mb-3" onclick="deleteContent();">Eliminar</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function deleteContent() {
+		var del = confirm("Deseas eliminar esta publicacion, si lo deseas los comentarios que contenga se eliminaran tambien");
+		if(del == true){
+			window.location.href = "{% url 'deleteContent' %}?delete={{ youinstance.id }}&val={{ youinstance.image }}";
+		}
+	}
+</script>
+
+{% if youinstanceComments %}
+<div class="container mt-5" style="width: 40%; background-color: #CEECF5; border-radius: 30px;">
+	{% for comment in youinstanceComments %}
+		<div style="margin-left: 30px;" class="row align-items-start">
+			<div class="col text-right">
+				<a onclick="deleteComment();"><img src="{% static 'open-iconic-master/png/circle-x-8x.png'%}" width="3%" height="3%"></a>
+			</div>
+		</div>
+		<div style="margin-left: 30px;" class="row align-items-start">
+			<p>{{ comment.username }}</p>
+		</div>
+		<div style="margin-left: 30px;" class="row align-items-start">
+			<p>{{ comment.description }}</p>
+		</div>
+		<div style="margin-left: 30px;" class="row align-items-start">
+			<p>{{ comment.timestamp }}</p>
+		</div>
+		<hr>
+
+		<script type="text/javascript">
+			function deleteComment() {
+				var del = confirm("Deseas elimiar este comentario");
+				if(del == true){
+					window.location.href = "{% url 'deleteComment' %}?details={{ youinstance.id }}&delete={{ comment.id }}";
+				}
+			}
+		</script>
+		{% endfor %}
+</div>
+{% endif %}
+
+{% else %}
+  	<p>Error</p>
+{% endif %}
+
+{% endblock %}

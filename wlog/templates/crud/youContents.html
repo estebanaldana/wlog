@@ -1,0 +1,85 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>You Contents</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wlog.css' %}">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+{% block youContent %}
+
+	<div class="container">
+		<div class="row align-items-start">
+			<div class="col mt-2">
+				<a href="{% url 'index' %}"><img class="animated bounce" src="{% static 'images/logo.png'%}" width="90" height="80"></a>
+			</div>
+		</div>
+	</div>
+
+	{% if object %}
+
+	<div class="container">
+		<div class="row justify-content-center">
+				<h3>Tus Plubliaciones</h3>
+		</div>
+	</div>
+
+	<div class="container cont-list">
+		<div class="row justify-content-center" style="margin-left: 20px; margin-right: 20px;">
+		{% for content in object %}
+		{% if content.idUser_id == user.id %}
+		<div class="col-3 offset-md-1 col-align content-color">
+			<img height="120" src="../media/{{ content.image }}">
+			<h2><p>{{ content.title }}</p></h2>
+			<p>{{ content.description|truncatechars_html:200 }}</p>
+			<p>{{ content.timestamp }}</p>
+			<p>{{ content.tipeStatus }}</p>
+			<a class="btn btn-primary mb-3" href="{% url 'youDetailContent' %}?details={{ content.id }}">Detalles</a>
+		</div>
+		{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+
+	{% if object.has_previous %}
+	<a href="?{{page_request}}={{object.previous_page_number}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">Previous</a>
+	{% endif %}
+	{% if object.hast_next %}
+	<a href="?{{page_request}}={{object.next_page_number}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">Next</a>
+	{% endif %}
+	
+	<div class="container">
+	<h2><span>{{ object.number}} de {{ object.paginator.num_pages }}</span></h2>
+	</div>
+
+	{% else %}
+	<p>nada</p>
+
+	{% endif %}
+
+	{% endblock %}
+
+	{% block youDetailsContent %}
+	{% endblock %}
+
+	{% block updateYouContent %}
+	{% endblock %}
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
