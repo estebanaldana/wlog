@@ -44,6 +44,5 @@ gulp.task('default', function() {
 	gulp.start('server:backend');
 	gulp.start('sass');
 	gulp.start('css');
-	gulp.start('collection:backend');
 	gulp.watch(lintPaths);
 });
