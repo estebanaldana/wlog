@@ -26,7 +26,7 @@ SECRET_KEY = 'yj#ee$=#2z0e+6zf$r1)bbn5e=_6u^ni@@^6bk&f5qy24-^(90'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'local.wlog.com']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'app.index',
     'app.user',
     'app.content',
-    'app.comments',
+    'app.comments', 
     'app.labels',
 ]
 
@@ -137,8 +137,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
 
 
 LOGIN_URL = reverse_lazy('login')

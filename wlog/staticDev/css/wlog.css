@@ -1,0 +1,79 @@
+.animated:hover {
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite; }
+
+.content-color {
+  background: #d1eeb5;
+  background: -moz-linear-gradient(left, #d1eeb5 0%, #94e52a 50%, #d7efbe 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #d1eeb5), color-stop(50%, #94e52a), color-stop(100%, #d7efbe));
+  background: -webkit-linear-gradient(left, #d1eeb5 0%, #94e52a 50%, #d7efbe 100%);
+  background: -o-linear-gradient(left, #d1eeb5 0%, #94e52a 50%, #d7efbe 100%);
+  background: -ms-linear-gradient(left, #d1eeb5 0%, #94e52a 50%, #d7efbe 100%);
+  background: linear-gradient(to right, #d1eeb5 0%, #94e52a 50%, #d7efbe 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1eeb5', endColorstr='#d7efbe', GradientType=1 );
+  border-radius: 50px; }
+
+.content-color:hover {
+  background: #b5eee2;
+  background: -moz-linear-gradient(left, #b5eee2 0%, #2ae5b3 50%, #beefe4 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #b5eee2), color-stop(50%, #2ae5b3), color-stop(100%, #beefe4));
+  background: -webkit-linear-gradient(left, #b5eee2 0%, #2ae5b3 50%, #beefe4 100%);
+  background: -o-linear-gradient(left, #b5eee2 0%, #2ae5b3 50%, #beefe4 100%);
+  background: -ms-linear-gradient(left, #b5eee2 0%, #2ae5b3 50%, #beefe4 100%);
+  background: linear-gradient(to right, #b5eee2 0%, #2ae5b3 50%, #beefe4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5eee2', endColorstr='#beefe4', GradientType=1 );
+  border-radius: 50px; }
+
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(-8px); } }
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(-8px); } }
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce; }
+
+/* div */
+.div-s {
+  margin-left: 90px;
+  margin-top: 30px; }
+
+.cont-list {
+  margin-top: 100px; }
+
+.button-mr {
+  margin-right: 105px; }
+
+.col-align {
+  text-align: center; }
+
+/* Mozaico */
+.mozaico-fixed {
+  margin-top: 8%;
+  background: url("../images/tics.jpg") no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 400px; }
+
+.mozaico-space {
+  padding: 200px;
+  width: 100%;
+  height: auto; }
+
+.word-mozaic {
+  color: blueviolet;
+  font-family: fantasy;
+  font-size: 100px;
+  margin-top: -150px; }

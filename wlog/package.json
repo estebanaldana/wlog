@@ -1,0 +1,27 @@
+{
+  "name": "wlog",
+  "version": "1.0.0",
+  "description": "wlog website",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglifycss": "^1.1.0",
+    "gulpfile-django": "^0.0.12",
+    "jsontool": "^7.0.2",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estebanaldana/wlog.git"
+  },
+  "author": "Esteban",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estebanaldana/wlog/issues"
+  },
+  "homepage": "https://github.com/estebanaldana/wlog#readme"
+}
